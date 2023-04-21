@@ -1,11 +1,3 @@
-aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin  1450388
-84830.dkr.ecr.ap-northeast-1.amazonaws.com
-
-aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/k3v6j7s7
-
-awscli authentication login with docker 
-
-
 # Spring Petclinic Multi Staged build.
 
 ```
