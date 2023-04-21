@@ -1,0 +1,41 @@
+---
+version: 0.0.7
+services:
+  nop-srv:
+    build: 
+      context: .
+    networks:
+      - nop-net  
+    ports:
+      - target: 5000
+        published: 5001
+        protocol: tcp
+        mode: host
+    environment:
+      - MYSQL_SERVER=nop_db  
+    depends_on:
+      - nop_db
+  nop_db:
+    image: mysql:5.6
+    networks:
+      - nop-net
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootroot
+      - MYSQL_DATABASE=test
+      - MYSQL_USER=rkdevops
+      - MYSQL_PASSWORD=rootroot
+    volumes:
+      - type: volume
+        source: nop_vol
+        target: /var/lib/mysql  
+
+volumes:
+  nop_vol:
+
+networks:
+  nop-net:
+    driver: bridge
+    attachable: true
+    ipam:
+      config:
+        - subnet: 10.120.1.0/24    
