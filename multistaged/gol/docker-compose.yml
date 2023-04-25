@@ -1,0 +1,11 @@
+---
+version: 0.0.7
+services:
+  gol_srv:
+    build: 
+      context: .
+    ports:
+      - target: 8080  
+        published: 8080
+        protocol: tcp
+        mode: host
